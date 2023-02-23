@@ -28,7 +28,7 @@ namespace BugTracker.Application.Services
                 throw new Exception("User with given email already exists");
             }
 
-            // create user and generate unique id & persis to db
+            // create user and generate unique id & persist to db
             var user = new User 
             { 
                 FirstName = firstName, 
@@ -52,7 +52,7 @@ namespace BugTracker.Application.Services
             // check if user alredy exists
             if (_userRepository.GetUserByEmail(email) is not User user)
             {
-                throw new Exception("User with given email doesn't exist");
+                throw new Exception("User with given email doesn't exist.");
             }
 
             // validate if password is correct
