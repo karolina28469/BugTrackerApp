@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BugTracker.Contracts.Authentication
 {
     public record RegisterRequest(
@@ -11,5 +6,4 @@ namespace BugTracker.Contracts.Authentication
         string LastName,
         string Email,
         string Password);
-
 }
