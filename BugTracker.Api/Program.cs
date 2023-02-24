@@ -1,7 +1,5 @@
 
 using BugTracker.Api.Common.Errors;
-using BugTracker.Api.Filter;
-using BugTracker.Api.Middleware;
 using BugTracker.Application;
 using BugTracker.Infrastructure;
 using ProblemDetailsFactory = Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory;
@@ -13,7 +11,6 @@ builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 
-// builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ProblemDetailsFactory, BugTrackerProblemDetailsFactory>();
 
@@ -31,8 +28,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-//app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseExceptionHandler("/error");
 

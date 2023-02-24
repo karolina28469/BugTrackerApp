@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -13,6 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\BugTracker.Contracts\BugTracker.Contracts.csproj" />
     <ProjectReference Include="..\BugTracker.Domain\BugTracker.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Errors\" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,8 @@ using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using Hellang.Middleware.ProblemDetails;
 using ProblemDetailsFactory = Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory;
+using ErrorOr;
+using BugTracker.Api.Common.Http;
 
 namespace BugTracker.Api.Common.Errors
 {
@@ -94,7 +96,12 @@ namespace BugTracker.Api.Common.Errors
 
             //  _configure?.Invoke(new() { HttpContext = httpContext!, ProblemDetails = problemDetails });
 
-            problemDetails.Extensions.Add("customProperty", "customValue");
+            var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
+
+            if (errors is not null)
+            {
+                problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
+            }
         }
     }
 }

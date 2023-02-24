@@ -1,12 +1,8 @@
-﻿using BugTracker.Application.Common.Errors;
-using BugTracker.Application.Common.Interfaces.Authentication;
+﻿using BugTracker.Application.Common.Interfaces.Authentication;
 using BugTracker.Application.Common.Interfaces.Persistence;
+using BugTracker.Domain.Common.Errors;
 using BugTracker.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ErrorOr;
 
 namespace BugTracker.Application.Services
 {
@@ -21,12 +17,12 @@ namespace BugTracker.Application.Services
             _userRepository = userRepository;
         }
 
-        public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+        public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
         {
             // check if user doesn't exists
             if (_userRepository.GetUserByEmail(email) is not null) 
             {
-                throw new DuplicateEmailException();
+                return Errors.User.DuplicateEmail;
             }
 
             // create user and generate unique id & persist to db
@@ -48,18 +44,18 @@ namespace BugTracker.Application.Services
                 token);
         }
 
-        public AuthenticationResult Login(string email, string password)
+        public ErrorOr<AuthenticationResult> Login(string email, string password)
         {
             // check if user alredy exists
             if (_userRepository.GetUserByEmail(email) is not User user)
             {
-                throw new Exception("User with given email doesn't exist.");
+                return Errors.Authentication.InvalidCredentials;
             }
 
             // validate if password is correct
             if(user.Password != password)
             {
-                throw new Exception("Invalid password.");
+                return Errors.Authentication.InvalidCredentials;
             }
 
             // create JWT token
@@ -69,7 +65,6 @@ namespace BugTracker.Application.Services
                 user, 
                 token);
         }
-
 
     }
 }
