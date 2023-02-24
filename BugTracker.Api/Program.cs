@@ -1,20 +1,27 @@
 
+using BugTracker.Api.Common.Errors;
 using BugTracker.Api.Filter;
 using BugTracker.Api.Middleware;
 using BugTracker.Application;
 using BugTracker.Infrastructure;
+using ProblemDetailsFactory = Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddApplication().AddInfrastructure(builder.Configuration);
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 // builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 builder.Services.AddControllers();
+builder.Services.AddSingleton<ProblemDetailsFactory, BugTrackerProblemDetailsFactory>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

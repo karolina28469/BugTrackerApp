@@ -1,4 +1,5 @@
-﻿using BugTracker.Application.Common.Interfaces.Authentication;
+﻿using BugTracker.Application.Common.Errors;
+using BugTracker.Application.Common.Interfaces.Authentication;
 using BugTracker.Application.Common.Interfaces.Persistence;
 using BugTracker.Domain.Entities;
 using System;
@@ -25,7 +26,7 @@ namespace BugTracker.Application.Services
             // check if user doesn't exists
             if (_userRepository.GetUserByEmail(email) is not null) 
             {
-                throw new Exception("User with given email already exists");
+                throw new DuplicateEmailException();
             }
 
             // create user and generate unique id & persist to db
