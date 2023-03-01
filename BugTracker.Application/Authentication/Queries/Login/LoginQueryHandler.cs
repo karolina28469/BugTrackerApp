@@ -22,6 +22,8 @@ namespace BugTracker.Application.Authentication.Queries.Login
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
         {
+            await Task.CompletedTask;
+
             // check if user alredy exists
             if (_userRepository.GetUserByEmail(query.Email) is not User user)
             {

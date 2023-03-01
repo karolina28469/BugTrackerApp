@@ -1,5 +1,4 @@
-﻿
-namespace BugTracker.Contracts.Authentication
+﻿namespace BugTracker.Contracts.Authentication
 {
     public record RegisterRequest(
         string FirstName,

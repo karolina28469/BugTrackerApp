@@ -1,18 +1,14 @@
-
-using BugTracker.Api.Common.Errors;
+using BugTracker.Api;
 using BugTracker.Application;
 using BugTracker.Infrastructure;
-using ProblemDetailsFactory = Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services
+    .AddPresentation()
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
-
-builder.Services.AddControllers();
-builder.Services.AddSingleton<ProblemDetailsFactory, BugTrackerProblemDetailsFactory>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
