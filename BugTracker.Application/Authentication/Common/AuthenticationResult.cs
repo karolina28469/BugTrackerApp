@@ -1,4 +1,4 @@
-﻿using BugTracker.Domain.Entities;
+﻿using BugTracker.Domain.UserAggregate;
 
 namespace BugTracker.Application.Authentication.Common
 {

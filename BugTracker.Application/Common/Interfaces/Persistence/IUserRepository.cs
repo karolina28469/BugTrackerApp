@@ -1,4 +1,4 @@
-﻿using BugTracker.Domain.Entities;
+﻿using BugTracker.Domain.UserAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

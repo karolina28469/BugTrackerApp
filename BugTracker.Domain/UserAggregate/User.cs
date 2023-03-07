@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BugTracker.Domain.Entities
+﻿namespace BugTracker.Domain.UserAggregate
 {
     public class User
     {

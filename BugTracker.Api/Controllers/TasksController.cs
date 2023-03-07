@@ -6,7 +6,6 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 namespace BugTracker.Api.Controllers 
 { 
     [Route("[controller]")]
-    [AllowAnonymous]
     public class TasksController : ApiController
     {
         [HttpGet]

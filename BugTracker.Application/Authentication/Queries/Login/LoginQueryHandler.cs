@@ -2,9 +2,10 @@
 using BugTracker.Application.Common.Interfaces.Authentication;
 using BugTracker.Application.Common.Interfaces.Persistence;
 using BugTracker.Domain.Common.Errors;
-using BugTracker.Domain.Entities;
+using BugTracker.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
+using Task = System.Threading.Tasks.Task;
 
 namespace BugTracker.Application.Authentication.Queries.Login
 {

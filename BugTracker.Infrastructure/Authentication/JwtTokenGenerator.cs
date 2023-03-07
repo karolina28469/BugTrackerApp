@@ -1,6 +1,6 @@
 ﻿using BugTracker.Application.Common.Interfaces.Authentication;
 using BugTracker.Application.Common.Interfaces.Services;
-using BugTracker.Domain.Entities;
+using BugTracker.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;

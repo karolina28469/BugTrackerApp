@@ -6,10 +6,12 @@ using BugTracker.Application.Authentication.Commands.Register;
 using BugTracker.Application.Authentication.Common;
 using BugTracker.Application.Authentication.Queries.Login;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker.Api.Controllers
 {
     [Route("auth")]
+    [AllowAnonymous]
     public class AuthenticationController : ApiController
     {
         private readonly ISender _mediator;
