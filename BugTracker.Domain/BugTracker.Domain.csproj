@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="ProjectAggregate\Entities\" />
+    <Folder Include="ReporterAggregate\Entities\" />
   </ItemGroup>
 
 </Project>

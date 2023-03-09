@@ -3,7 +3,7 @@ using BugTracker.Domain.ProjectAggregate.ValueObjects;
 using BugTracker.Domain.ReporterAggregate.ValueObjects;
 using BugTracker.Domain.TaskAggregate.ValueObjects;
 
-namespace BugTracker.Domain.Project
+namespace BugTracker.Domain.ProjectAggregate
 {
     public sealed class Project : AggregateRoot<ProjectId>
     {
